@@ -3,7 +3,6 @@
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
-        <option value="$PROJECT_DIR$/02-params/rest-with-spring-boot-and-java/pom.xml" />
         <option value="$PROJECT_DIR$/01-controller/rest-with-spring-boot-and-java/pom.xml" />
       </list>
     </option>
