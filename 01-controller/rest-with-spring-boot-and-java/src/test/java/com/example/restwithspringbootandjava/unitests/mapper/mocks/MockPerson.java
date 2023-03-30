@@ -1,4 +1,4 @@
-package com.example.restwithspringbootandjava.unitests.mapperr.mocks;
+package com.example.restwithspringbootandjava.unitests.mapper.mocks;
 
 import com.example.restwithspringbootandjava.model.Person;
 import com.example.restwithspringbootandjava.vo.v1.PersonVO;

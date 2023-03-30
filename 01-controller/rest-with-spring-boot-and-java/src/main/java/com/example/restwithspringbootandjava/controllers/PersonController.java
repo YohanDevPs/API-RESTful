@@ -1,10 +1,8 @@
 package com.example.restwithspringbootandjava.controllers;
 
-import com.example.restwithspringbootandjava.model.Person;
 import com.example.restwithspringbootandjava.service.PersonService;
 import com.example.restwithspringbootandjava.vo.v1.PersonVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +22,7 @@ public class PersonController {
     }
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Person findById(@PathVariable(value = "id") Long id) throws Exception {
+    public PersonVO findById(@PathVariable(value = "id") Long id) throws Exception {
         return service.findById(id);
     }
 
