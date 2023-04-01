@@ -1,7 +1,7 @@
 package com.example.restwithspringbootandjava.unitests.mapper.mocks;
 
 import com.example.restwithspringbootandjava.model.Person;
-import com.example.restwithspringbootandjava.vo.v1.PersonVO;
+import com.example.restwithspringbootandjava.vo.PersonVO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,20 +34,20 @@ public class MockPerson {
 
     public Person mockEntity(Integer number) {
         Person person = new Person();
-        person.setAddress("Addres Test" + number);
+        person.setId(number.longValue());
+        person.setAddress("Address Test" + number);
         person.setFirstName("First Name Test" + number);
         person.setGender(((number % 2)==0) ? "Male" : "Female");
-        person.setId(number.longValue());
         person.setLastName("Last Name Test" + number);
         return person;
     }
 
     public PersonVO mockVO(Integer number) {
         PersonVO person = new PersonVO();
-        person.setAddress("Addres Test" + number);
+        person.setAddress("Address Test" + number);
         person.setFirstName("First Name Test" + number);
         person.setGender(((number % 2)==0) ? "Male" : "Female");
-        person.setId(number.longValue());
+        person.setKey(number.longValue());
         person.setLastName("Last Name Test" + number);
         return person;
     }

@@ -1,84 +1,83 @@
 package com.example.restwithspringbootandjava.service;
 
+import com.example.restwithspringbootandjava.controllers.PersonController;
+import com.example.restwithspringbootandjava.exeptions.RequiredObjectIsNullException;
 import com.example.restwithspringbootandjava.exeptions.ResourceNotFoundException;
-import com.example.restwithspringbootandjava.mapper.ModelMapperUtils;
-import com.example.restwithspringbootandjava.mapper.custom.PersonMapper;
+import com.example.restwithspringbootandjava.mapper.UtilMapper;
 import com.example.restwithspringbootandjava.model.Person;
 import com.example.restwithspringbootandjava.repositories.PersonRepository;
-import com.example.restwithspringbootandjava.vo.v1.PersonVO;
-import com.example.restwithspringbootandjava.vo.v2.PersonVOV2;
+import com.example.restwithspringbootandjava.vo.PersonVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.concurrent.atomic.AtomicLong;
 import java.util.logging.Logger;
+
+import static com.example.restwithspringbootandjava.mapper.UtilMapper.parseObject;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @Service
 public class PersonService {
 
+    public static final String NO_RECORDS_MSG_ERROR = "No records found for this id";
     @Autowired
     private PersonRepository repository;
-
-    @Autowired
-    private PersonMapper mapper;
-
-    private final AtomicLong counter = new AtomicLong();
     private Logger logger = Logger.getLogger(PersonService.class.getName());
 
-    public PersonVO findById(Long id) {
-        logger.info("find one PersonVO");
-
+    public PersonVO findById(Long id)  {
         var entity = repository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("No records found for this id"));
-        return ModelMapperUtils.parseObject(entity, PersonVO.class);
+                .orElseThrow(() -> new ResourceNotFoundException(NO_RECORDS_MSG_ERROR));
+        var vo = parseObject(entity, PersonVO.class);
+        vo.add(linkTo(methodOn(PersonController.class).findById(id)).withSelfRel());
+        logger.info("find one PersonVO");
+        return vo;
     }
 
     public List<PersonVO> findAll() {
+
+        var voList = UtilMapper.parseListObjects(repository.findAll(), PersonVO.class);
+        voList.stream()
+                .forEach(vo -> {
+                    try {
+                        vo.add(linkTo(methodOn(PersonController.class).findById(vo.getKey())).withSelfRel());
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                });
         logger.info("finding all people!");
-        return ModelMapperUtils.parseListObjects(repository.findAll(), PersonVO.class);
+        return voList;
     }
 
     public PersonVO create(PersonVO person) {
+        if(person == null) throw new RequiredObjectIsNullException();
+        var entity = parseObject(person, Person.class);
+        var vo = parseObject(repository.save(entity), PersonVO.class);
+        vo.add(linkTo(methodOn(PersonController.class).findById(vo.getKey())).withSelfRel());
         logger.info("Creating one PersonVO");
-        var entity = ModelMapperUtils.parseObject(person, Person.class);
-        var vo = ModelMapperUtils.parseObject(repository.save(entity), PersonVO.class);
         return vo;
     }
-
-
-    public PersonVOV2 createV2(PersonVOV2 person) {
-        logger.info("Creating one PersonVO");
-        var entity = ModelMapperUtils.parseObject(person, Person.class);
-        var vo = ModelMapperUtils.parseObject(repository.save(entity), PersonVOV2.class);
-        return vo;
-    }
-
-//    public PersonVOV2 createV2(PersonVOV2 person) {
-//        logger.info("Creating one PersonVO");
-//        var entity = mapper.convertVoToEntity(person);
-//        var vo = mapper.convertEntityToVo(repository.save(entity));
-//        return vo;
-//    }
 
     public PersonVO update(PersonVO person) {
-        logger.info("Update one PersonVO");
+        if(person == null) throw new RequiredObjectIsNullException();
 
-        var entity = repository.findById(person.getId())
-                .orElseThrow(() -> new ResourceNotFoundException("No records found for this id"));
+        var entity = repository.findById(person.getKey())
+                .orElseThrow(() -> new ResourceNotFoundException(NO_RECORDS_MSG_ERROR));
 
         entity.setFirstName(person.getFirstName());
         entity.setLastName(person.getLastName());
         entity.setAddress(person.getAddress());
         entity.setGender(person.getGender());
 
-        var vo = ModelMapperUtils.parseObject(repository.save(entity), PersonVO.class);
+        var vo = parseObject(repository.save(entity), PersonVO.class);
+        vo.add(linkTo(methodOn(PersonController.class).findById(vo.getKey())).withSelfRel());
+        logger.info("Update one PersonVO");
         return vo;
     }
 
     public void delete(Long id) {
         var entity = repository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("No records found for this id"));
+                .orElseThrow(() -> new ResourceNotFoundException(NO_RECORDS_MSG_ERROR));
         repository.delete(entity);
     }
 }
