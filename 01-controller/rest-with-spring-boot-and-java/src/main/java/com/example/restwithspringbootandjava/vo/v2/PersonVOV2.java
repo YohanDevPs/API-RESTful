@@ -1,26 +1,26 @@
-package com.example.restwithspringbootandjava.vo.v1;
-
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+package com.example.restwithspringbootandjava.vo.v2;
 
 import java.io.Serializable;
+import java.util.Date;
 
-@JsonPropertyOrder({"id", "firstName", "lastName", "address", "gender"})
-public class PersonVO implements Serializable {
+public class PersonVOV2 implements Serializable {
 
     private Long id;
     private String firstName;
     private String lastName;
     private String address;
     private String gender;
+    private Date birthDay;
 
-    public PersonVO(String firstName, String lastName, String address, String gender) {
+    public PersonVOV2() {
+    }
+
+    public PersonVOV2(String firstName, String lastName, String address, String gender, Date birthDay) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
         this.gender = gender;
-    }
-
-    public PersonVO() {
+        this.birthDay = birthDay;
     }
 
     public Long getId() {
@@ -63,19 +63,27 @@ public class PersonVO implements Serializable {
         this.gender = gender;
     }
 
+    public Date getBirthDay() {
+        return birthDay;
+    }
+
+    public void setBirthDay(Date birthDay) {
+        this.birthDay = birthDay;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof PersonVO personVO)) return false;
+        if (!(o instanceof PersonVOV2 that)) return false;
 
-        if (getId() != null ? !getId().equals(personVO.getId()) : personVO.getId() != null) return false;
-        if (getFirstName() != null ? !getFirstName().equals(personVO.getFirstName()) : personVO.getFirstName() != null)
+        if (getId() != null ? !getId().equals(that.getId()) : that.getId() != null) return false;
+        if (getFirstName() != null ? !getFirstName().equals(that.getFirstName()) : that.getFirstName() != null)
             return false;
-        if (getLastName() != null ? !getLastName().equals(personVO.getLastName()) : personVO.getLastName() != null)
+        if (getLastName() != null ? !getLastName().equals(that.getLastName()) : that.getLastName() != null)
             return false;
-        if (getAddress() != null ? !getAddress().equals(personVO.getAddress()) : personVO.getAddress() != null)
-            return false;
-        return getGender() != null ? getGender().equals(personVO.getGender()) : personVO.getGender() == null;
+        if (getAddress() != null ? !getAddress().equals(that.getAddress()) : that.getAddress() != null) return false;
+        if (getGender() != null ? !getGender().equals(that.getGender()) : that.getGender() != null) return false;
+        return getBirthDay() != null ? getBirthDay().equals(that.getBirthDay()) : that.getBirthDay() == null;
     }
 
     @Override
@@ -85,6 +93,7 @@ public class PersonVO implements Serializable {
         result = 31 * result + (getLastName() != null ? getLastName().hashCode() : 0);
         result = 31 * result + (getAddress() != null ? getAddress().hashCode() : 0);
         result = 31 * result + (getGender() != null ? getGender().hashCode() : 0);
+        result = 31 * result + (getBirthDay() != null ? getBirthDay().hashCode() : 0);
         return result;
     }
 }
