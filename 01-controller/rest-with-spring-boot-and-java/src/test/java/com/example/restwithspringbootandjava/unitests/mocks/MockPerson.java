@@ -1,4 +1,4 @@
-package com.example.restwithspringbootandjava.unitests.mapper.mocks;
+package com.example.restwithspringbootandjava.unitests.mocks;
 
 import com.example.restwithspringbootandjava.model.Person;
 import com.example.restwithspringbootandjava.vo.PersonVO;
@@ -51,5 +51,4 @@ public class MockPerson {
         person.setLastName("Last Name Test" + number);
         return person;
     }
-
 }

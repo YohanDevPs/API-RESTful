@@ -1,11 +1,9 @@
-package com.example.restwithspringbootandjava.unitests.mapper.service;
+package com.example.restwithspringbootandjava.unitests.service;
 
 import com.example.restwithspringbootandjava.exeptions.RequiredObjectIsNullException;
-import com.example.restwithspringbootandjava.model.Person;
-import com.example.restwithspringbootandjava.repositories.PersonRepository;
-import com.example.restwithspringbootandjava.service.PersonService;
-import com.example.restwithspringbootandjava.unitests.mapper.mocks.MockPerson;
-import com.example.restwithspringbootandjava.vo.PersonVO;
+import com.example.restwithspringbootandjava.repositories.BookRepository;
+import com.example.restwithspringbootandjava.service.BookService;
+import com.example.restwithspringbootandjava.unitests.mocks.MockBook;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -15,6 +13,8 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -22,23 +22,23 @@ import static org.mockito.Mockito.when;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @ExtendWith(MockitoExtension.class)
-class PersonServiceTest {
+public class BookServiceTest {
 
-    MockPerson input;
+    MockBook input;
     @InjectMocks
-    private PersonService service;
+    private BookService service;
     @Mock
-    private PersonRepository repository;
+    private BookRepository repository;
 
     @BeforeEach
     void setUpMocks() {
-        input = new MockPerson();
+        input = new MockBook();
         MockitoAnnotations.openMocks(this);
     }
 
     @Test
     void testFindById()  {
-        Person entity = input.mockEntity();
+        var entity = input.mockEntity();
         entity.setId(1L);
 
         when(repository.findById(1L)).thenReturn(Optional.of(entity));
@@ -47,11 +47,12 @@ class PersonServiceTest {
         assertNotNull(result);
         assertNotNull(result.getKey());
         assertNotNull(result.getLinks());
-        assertTrue(result.toString().contains("links: [</api/person/v1/1>;rel=\"self\"]"));
-        assertEquals("First Name Test0", result.getFirstName());
-        assertEquals("Last Name Test0", result.getLastName());
-        assertEquals("Address Test0", result.getAddress());
-        assertEquals("Male", result.getGender());
+
+        assertTrue(result.toString().contains("links: [</api/books/v1/1>;rel=\"self\"]"));
+        assertEquals("Author name0", result.getAuthor());
+        assertEquals(new Date(0), result.getLaunchDate());
+        assertEquals(BigDecimal.ZERO, result.getPrice());
+        assertEquals("Book title0", result.getTitle());
     }
 
     @Test
@@ -60,35 +61,35 @@ class PersonServiceTest {
 
         when(repository.findAll()).thenReturn(list);
 
-        var people = service.findAll();
-        assertNotNull(people);
-        assertEquals(14, people.size());
+        var books = service.findAll();
+        assertNotNull(books);
+        assertEquals(14, books.size());
 
-        var personOne = people.get(1);
+        var bookOne = books.get(1);
 
-        assertTrue(personOne.toString().contains("links: [</api/person/v1/1>;rel=\"self\"]"));
-        assertEquals("First Name Test1", personOne.getFirstName());
-        assertEquals("Last Name Test1", personOne.getLastName());
-        assertEquals("Address Test1", personOne.getAddress());
-        assertEquals("Female", personOne.getGender());
+        assertTrue(bookOne.toString().contains("links: [</api/books/v1/1>;rel=\"self\"]"));
+        assertEquals("Author name1", bookOne.getAuthor());
+        assertEquals(new Date(1), bookOne.getLaunchDate());
+        assertEquals(BigDecimal.ONE, bookOne.getPrice());
+        assertEquals("Book title1", bookOne.getTitle());
 
-        var personEight = people.get(8);
+        var bookEight = books.get(8);
 
-        assertTrue(personEight.toString().contains("links: [</api/person/v1/8>;rel=\"self\"]"));
-        assertEquals("First Name Test8", personEight.getFirstName());
-        assertEquals("Last Name Test8", personEight.getLastName());
-        assertEquals("Address Test8", personEight.getAddress());
-        assertEquals("Male", personEight.getGender());
+        assertTrue(bookEight.toString().contains("links: [</api/books/v1/8>;rel=\"self\"]"));
+        assertEquals("Author name8", bookEight.getAuthor());
+        assertEquals(new Date(8), bookEight.getLaunchDate());
+        assertEquals(BigDecimal.valueOf(8), bookEight.getPrice());
+        assertEquals("Book title8", bookEight.getTitle());
     }
 
     @Test
     void testCreate() {
         var entity = input.mockEntity();
-        Person persisted = entity;
+        var persisted = entity;
 
         persisted.setId(1L);
 
-        PersonVO vo = input.mockVO();
+        var vo = input.mockVO();
         vo.setKey(1L);
 
         when(repository.save(entity)).thenReturn(persisted);
@@ -98,17 +99,18 @@ class PersonServiceTest {
         assertNotNull(result);
         assertNotNull(result.getKey());
         assertNotNull(result.getLinks());
+        System.out.println(result);
         assertTrue(result.toString().contains("links: [</api/person/v1/1>;rel=\"self\"]"));
-        assertEquals("First Name Test0", result.getFirstName());
-        assertEquals("Last Name Test0", result.getLastName());
-        assertEquals("Address Test0", result.getAddress());
-        assertEquals("Male", result.getGender());
+        assertEquals("Author name0", result.getAuthor());
+        assertEquals(new Date(0), result.getLaunchDate());
+        assertEquals(BigDecimal.ZERO, result.getPrice());
+        assertEquals("Book title0", result.getTitle());
     }
 
     @Test
     void testCreateIfNullPerson() {
         Exception exception = assertThrows(RequiredObjectIsNullException.class, () -> {
-           service.create(null);
+            service.create(null);
         });
 
         String expectedMessage = "Object null is not allowed";
@@ -119,11 +121,11 @@ class PersonServiceTest {
     @Test
     void testUpdate() {
         var entity = input.mockEntity();
-        Person persisted = entity;
+        var persisted = entity;
 
         persisted.setId(1L);
 
-        PersonVO vo = input.mockVO();
+        var vo = input.mockVO();
         vo.setKey(1L);
 
         when(repository.findById(1L)).thenReturn(Optional.of(entity));
@@ -134,11 +136,12 @@ class PersonServiceTest {
         assertNotNull(result);
         assertNotNull(result.getKey());
         assertNotNull(result.getLinks());
-        assertTrue(result.toString().contains("links: [</api/person/v1/1>;rel=\"self\"]"));
-        assertEquals("First Name Test0", result.getFirstName());
-        assertEquals("Last Name Test0", result.getLastName());
-        assertEquals("Address Test0", result.getAddress());
-        assertEquals("Male", result.getGender());
+        System.out.println(result);
+        assertTrue(result.toString().contains("links: [</api/books/v1/1>;rel=\"self\"]"));
+        assertEquals("Author name0", result.getAuthor());
+        assertEquals(new Date(0), result.getLaunchDate());
+        assertEquals(BigDecimal.ZERO, result.getPrice());
+        assertEquals("Book title0", result.getTitle());
     }
 
     @Test
@@ -154,7 +157,7 @@ class PersonServiceTest {
 
     @Test
     void delete() {
-        Person entity = input.mockEntity();
+        var entity = input.mockEntity();
         entity.setId(1L);
 
         when(repository.findById(1L)).thenReturn(Optional.of(entity));

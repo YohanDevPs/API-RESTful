@@ -2,7 +2,7 @@ package com.example.restwithspringbootandjava.unitests.mapper;
 
 import com.example.restwithspringbootandjava.mapper.UtilMapper;
 import com.example.restwithspringbootandjava.model.Person;
-import com.example.restwithspringbootandjava.unitests.mapper.mocks.MockPerson;
+import com.example.restwithspringbootandjava.unitests.mocks.MockPerson;
 import com.example.restwithspringbootandjava.vo.PersonVO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

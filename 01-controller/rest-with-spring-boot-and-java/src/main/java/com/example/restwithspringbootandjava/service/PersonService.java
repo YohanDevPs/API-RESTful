@@ -23,6 +23,7 @@ public class PersonService {
     public static final String NO_RECORDS_MSG_ERROR = "No records found for this id";
     @Autowired
     private PersonRepository repository;
+
     private Logger logger = Logger.getLogger(PersonService.class.getName());
 
     public PersonVO findById(Long id)  {
