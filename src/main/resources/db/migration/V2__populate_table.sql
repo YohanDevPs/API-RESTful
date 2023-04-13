@@ -1,0 +1,1 @@
+ INSERT INTO `person` VALUES (1,'Mahatma','Gandhi','India','Male'),(2,'Muhamad','Ali', 'as - Croatia','Male');
