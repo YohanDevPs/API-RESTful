@@ -7,7 +7,7 @@ O principal objetivo desse projeto é criar uma API RESTful com poucas entidades
 ## STATUS - Em construção :hammer:
 
 - CRUD para Pessoas e Livros :white_check_mark:
-- Utilização do padrao VO sua conversao com Dozer nas classes de serviço :white_check_mark:
+- Utilizar padrão VO e converção com Dozer nas classes de serviço :white_check_mark:
 - Integração com MySql :white_check_mark:
 - Implementar de suporte à Migrations com FlyWay :white_check_mark:
 - Content negotiation - prover JSON, YAML e XML :white_check_mark:
