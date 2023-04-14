@@ -13,9 +13,9 @@ public class OpenApiConfig {
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("Api para avaliação da Attornatus")
-                        .description("Api para cadastro de pessoas e endereços")
+                        .title("API RESTful")
+//                        .version("version 1")
+                        .description("Api for managing people and books")
                         .license(new License().name("Apache 2.0")));
     }
-
 }
