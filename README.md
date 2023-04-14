@@ -13,7 +13,7 @@ O principal objetivo desse projeto é criar uma API RESTful com poucas entidades
 - Content negotiation - prover JSON, YAML e XML :white_check_mark:
 - Implementar HATEOS (Hypermedia as the Engine of Application State) :white_check_mark:
 - Adicinar suporte ao Swagger :white_check_mark:
-- Configurar Cross-origin
+- Configurar Cross-origin :white_check_mark:
 - Autenticação com JWT e Spring Security
 - Blindar aplicação com Rest Assured, Testcontainers e JUnit 5
 - Implementar busca paginada
