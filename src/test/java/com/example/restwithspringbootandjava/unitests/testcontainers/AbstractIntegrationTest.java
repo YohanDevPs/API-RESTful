@@ -12,10 +12,9 @@ import java.util.Map;
 import java.util.stream.Stream;
 
 @ContextConfiguration(initializers = AbstractIntegrationTest.Initializer.class)
-public class AbstractIntegrationTest extends Initializer {
+public class AbstractIntegrationTest {
 
-
-    public class Initializer implements ApplicationContextInitializer<ConfigurableApplicationContext>  {
+    static class Initializer implements ApplicationContextInitializer<ConfigurableApplicationContext>  {
         static MySQLContainer<?> mysql = new MySQLContainer<>("mysql:8.0.32");
 
         private static void startContainers() {
