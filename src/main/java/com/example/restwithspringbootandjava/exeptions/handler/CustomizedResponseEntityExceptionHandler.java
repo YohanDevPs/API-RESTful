@@ -1,6 +1,7 @@
 package com.example.restwithspringbootandjava.exeptions.handler;
 
 import com.example.restwithspringbootandjava.exeptions.ExceptionResponse;
+import com.example.restwithspringbootandjava.exeptions.InvalidAuthenticationException;
 import com.example.restwithspringbootandjava.exeptions.RequiredObjectIsNullException;
 import com.example.restwithspringbootandjava.exeptions.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
@@ -15,7 +16,7 @@ import java.util.Date;
 
 @RestController
 @ControllerAdvice
-public class CustomizedResponseEntitiyExceptionHandler extends ResponseEntityExceptionHandler {
+public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public final ResponseEntity<ExceptionResponse> handlerAllExceptions(Exception ex, WebRequest request) {
@@ -39,5 +40,13 @@ public class CustomizedResponseEntitiyExceptionHandler extends ResponseEntityExc
                 new Date(), ex.getMessage(), request.getDescription(false));
 
         return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(InvalidAuthenticationException.class)
+    public final ResponseEntity<ExceptionResponse> handleInvalidJwtAuthenticationException(Exception ex, WebRequest request) {
+        ExceptionResponse exceptionResponse = new ExceptionResponse(
+                new Date(), ex.getMessage(), request.getDescription(false));
+
+        return new ResponseEntity<>(exceptionResponse, HttpStatus.FORBIDDEN);
     }
 }
