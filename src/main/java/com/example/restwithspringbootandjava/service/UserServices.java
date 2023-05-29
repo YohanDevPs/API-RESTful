@@ -1,22 +1,13 @@
 package com.example.restwithspringbootandjava.service;
 
-import com.example.restwithspringbootandjava.controllers.PersonController;
-import com.example.restwithspringbootandjava.exeptions.ResourceNotFoundException;
-import com.example.restwithspringbootandjava.repositories.PersonRepository;
 import com.example.restwithspringbootandjava.repositories.UserRepository;
-import com.example.restwithspringbootandjava.vo.PersonVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.logging.Logger;
-
-import static com.example.restwithspringbootandjava.mapper.UtilMapper.parseObject;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @Service
 public class UserServices implements UserDetailsService {

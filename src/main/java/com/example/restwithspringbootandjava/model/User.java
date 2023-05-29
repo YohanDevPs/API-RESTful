@@ -19,7 +19,7 @@ public class User implements UserDetails {
     private String userName;
     @Column(name = "full_name")
     private String fullName;
-    @Column
+    @Column(name = "password")
     private String password;
     @Column(name = "account_non_expired")
     private boolean account_non_expired;
