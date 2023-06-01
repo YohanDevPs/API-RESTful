@@ -22,23 +22,23 @@ public class User implements UserDetails {
     @Column(name = "password")
     private String password;
     @Column(name = "account_non_expired")
-    private boolean account_non_expired;
+    private boolean accountNonExpired;
     @Column(name = "account_non_locked")
     private boolean accountNonLocked;
     @Column(name = "credentials_non_expired")
     private boolean credentialsNonExpired;
-    @Column
+    @Column(name = "enabled")
     private boolean enabled;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_permission", joinColumns = {@JoinColumn(name = "id_user")},
-        inverseJoinColumns = {@JoinColumn(name = "id_permission")}
-    )
+    inverseJoinColumns = {@JoinColumn(name = "id_permission")})
     private List<Permission> permissions;
 
-    private User() {}
+    public User() {
+    }
 
-    private List<String> getRoles() {
+    public List<String> getRoles() {
         List<String> roles = new ArrayList<>();
         for (Permission permission: permissions) {
             roles.add(permission.getDescription());
@@ -63,7 +63,7 @@ public class User implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return this.account_non_expired;
+        return this.accountNonExpired;
     }
 
     @Override
@@ -109,12 +109,8 @@ public class User implements UserDetails {
         this.password = password;
     }
 
-    public boolean isAccount_non_expired() {
-        return account_non_expired;
-    }
-
-    public void setAccount_non_expired(boolean account_non_expired) {
-        this.account_non_expired = account_non_expired;
+    public void setAccountNonExpired(boolean accountNonExpired) {
+        this.accountNonExpired = accountNonExpired;
     }
 
     public void setAccountNonLocked(boolean accountNonLocked) {
@@ -139,10 +135,11 @@ public class User implements UserDetails {
 
     @Override
     public boolean equals(Object o) {
+
         if (this == o) return true;
         if (!(o instanceof User user)) return false;
 
-        if (isAccount_non_expired() != user.isAccount_non_expired()) return false;
+        if (isAccountNonExpired() != user.isAccountNonExpired()) return false;
         if (isAccountNonLocked() != user.isAccountNonLocked()) return false;
         if (isCredentialsNonExpired() != user.isCredentialsNonExpired()) return false;
         if (isEnabled() != user.isEnabled()) return false;
@@ -162,7 +159,7 @@ public class User implements UserDetails {
         result = 31 * result + (getUserName() != null ? getUserName().hashCode() : 0);
         result = 31 * result + (getFullName() != null ? getFullName().hashCode() : 0);
         result = 31 * result + (getPassword() != null ? getPassword().hashCode() : 0);
-        result = 31 * result + (isAccount_non_expired() ? 1 : 0);
+        result = 31 * result + (isAccountNonExpired() ? 1 : 0);
         result = 31 * result + (isAccountNonLocked() ? 1 : 0);
         result = 31 * result + (isCredentialsNonExpired() ? 1 : 0);
         result = 31 * result + (isEnabled() ? 1 : 0);

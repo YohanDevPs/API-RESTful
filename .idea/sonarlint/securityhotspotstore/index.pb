@@ -34,10 +34,6 @@ isrc/test/java/com/example/restwithspringbootandjava/unitests/integrationtests/S
 vsrc/test/java/com/example/restwithspringbootandjava/unitests/integrationtests/controller/PersonControllerJsonTest.java,2\8\284b03086bd692fb8cb29e54ce38d901523d4614
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
-
-Osrc/main/java/com/example/restwithspringbootandjava/security/JwtConfigurer.java,0\2\026da0b937a9c61beb7065a886373e59085ba063
-€
-Psrc/main/java/com/example/restwithspringbootandjava/security/JwtTokenFilter.java,5\3\53dd0c00d943b65e0cb3148081f16668a4365b5b
 …
 Usrc/main/java/com/example/restwithspringbootandjava/controllers/PersonController.java,8\c\8cfe0f67cd473dafc9744e2eef953ca87e040c67
 „
@@ -62,3 +58,23 @@ Dsrc/main/java/com/example/restwithspringbootandjava/vo/PersonVO.java,7\f\7fd3b
 [src/test/java/com/example/restwithspringbootandjava/unitests/service/PersonServiceTest.java,9\9\999d1d15fff8637bb0c8c02a8f6d92a06346eae8
 w
 Gsrc/main/java/com/example/restwithspringbootandjava/util/MediaType.java,2\0\202ef540c93cc77777a53d003de1acc7a64b21c7
+p
+@src/main/java/com/example/restwithspringbootandjava/Startup.java,b\a\baf9fe3a9e3a965e76f56775c3b1d1766ea91094
+y
+Isrc/main/java/com/example/restwithspringbootandjava/config/WebConfig.java,4\9\490db54be2ff0a2b10a7cf6eea05320b8e66d352
+ 
+psrc/main/java/com/example/restwithspringbootandjava/serialization/converter/YamlJackson2HttpMesageConverter.java,2\6\264d36bbebc0a971b868adb34c8c71eb62b7d162
+s
+Csrc/main/java/com/example/restwithspringbootandjava/model/Book.java,9\d\9d2050f3c8cf68d95db34bab52d48ace35a2141b
+‘
+asrc/main/java/com/example/restwithspringbootandjava/exeptions/InvalidAuthenticationException.java,3\7\3776d6d24889ae83603fcb7195166818b3746cd2
+£
+ssrc/main/java/com/example/restwithspringbootandjava/exeptions/handler/CustomizedResponseEntityExceptionHandler.java,e\a\ea74cc95852c75d4708571f5c44c7d29c252e1e6
+|
+Lsrc/main/java/com/example/restwithspringbootandjava/vo/security/TokenVO.java,e\1\e1cfd340a5aea0923fff9a3f0ebc3fb3e5683433
+}
+Msrc/main/java/com/example/restwithspringbootandjava/service/UserServices.java,6\f\6f3718005d466c1761d0e3cb2320570533f4c505
+}
+Msrc/main/java/com/example/restwithspringbootandjava/config/OpenApiConfig.java,7\f\7f42dcc27d32194e5fa0cdad4f7240f7ef92443f
+u
+Esrc/main/java/com/example/restwithspringbootandjava/model/Person.java,0\0\0022884a79c4a97b4314f3aed8faa9b657612fc8

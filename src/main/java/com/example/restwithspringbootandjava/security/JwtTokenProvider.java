@@ -40,7 +40,7 @@ public class JwtTokenProvider {
         secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
         algorithm = Algorithm.HMAC256(secretKey.getBytes());
     }
-    
+
     public TokenVO createAccessToken(String userName, List<String> rows) {
         Date now = new Date();
         Date validity = new Date(now.getTime() + validityInMilliseconds);
