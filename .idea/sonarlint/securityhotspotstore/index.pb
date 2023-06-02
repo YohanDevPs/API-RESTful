@@ -1,8 +1,6 @@
 
 Ü
 Vsrc/main/java/com/example/restwithspringbootandjava/repositories/PersonRepository.java,2\c\2c7c2b2885ef8f69555ba602b0113d9f71027773
-Ñ
-Tsrc/main/java/com/example/restwithspringbootandjava/repositories/BookRepository.java,a\2\a2b3115473d6d60a4308bd10e93e87b566e731b9
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
@@ -20,8 +18,6 @@ Rsrc/test/java/com/example/restwithspringbootandjava/unitests/mocks/MockPerson.j
 mvnw.cmd,1\f\1f1763f358c257ea3515417352b82b0165647ad1
 9
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
-É
-Ssrc/main/java/com/example/restwithspringbootandjava/controllers/BookController.java,a\c\acbdb4bfb55d315b1e8d4de7b8126b6f93abbb3b
 é
 ^src/test/java/com/example/restwithspringbootandjava/unitests/integrationtests/vo/PersonVO.java,6\1\6189a2aa3efbf654afa80ec51eca9e0410cff293
 Ñ
@@ -34,16 +30,12 @@ isrc/test/java/com/example/restwithspringbootandjava/unitests/integrationtests/S
 vsrc/test/java/com/example/restwithspringbootandjava/unitests/integrationtests/controller/PersonControllerJsonTest.java,2\8\284b03086bd692fb8cb29e54ce38d901523d4614
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
-Ö
-Usrc/main/java/com/example/restwithspringbootandjava/controllers/PersonController.java,8\c\8cfe0f67cd473dafc9744e2eef953ca87e040c67
 Ñ
 Tsrc/main/java/com/example/restwithspringbootandjava/exeptions/ExceptionResponse.java,4\b\4b4b9766ca738ce24ccae8ae4378f021e6f1aa51
 ê
 `src/main/java/com/example/restwithspringbootandjava/exeptions/RequiredObjectIsNullException.java,b\d\bda92ccb4347901b0313d6d5b7632ae68f8519ad
 å
 \src/main/java/com/example/restwithspringbootandjava/exeptions/ResourceNotFoundException.java,f\d\fd7fc82c98b9038486840d248eb1cd8da65c7c90
-~
-Nsrc/main/java/com/example/restwithspringbootandjava/service/PersonService.java,a\5\a55724c300c6a09c35484678e212cc87fd5d3a91
 |
 Lsrc/main/java/com/example/restwithspringbootandjava/service/BookService.java,f\0\f0f504c7c93deb3c9d9219e62fe268253f17c7cf
 á
@@ -58,10 +50,6 @@ Dsrc/main/java/com/example/restwithspringbootandjava/vo/PersonVO.java,7\f\7fd3b
 [src/test/java/com/example/restwithspringbootandjava/unitests/service/PersonServiceTest.java,9\9\999d1d15fff8637bb0c8c02a8f6d92a06346eae8
 w
 Gsrc/main/java/com/example/restwithspringbootandjava/util/MediaType.java,2\0\202ef540c93cc77777a53d003de1acc7a64b21c7
-p
-@src/main/java/com/example/restwithspringbootandjava/Startup.java,b\a\baf9fe3a9e3a965e76f56775c3b1d1766ea91094
-y
-Isrc/main/java/com/example/restwithspringbootandjava/config/WebConfig.java,4\9\490db54be2ff0a2b10a7cf6eea05320b8e66d352
 †
 psrc/main/java/com/example/restwithspringbootandjava/serialization/converter/YamlJackson2HttpMesageConverter.java,2\6\264d36bbebc0a971b868adb34c8c71eb62b7d162
 s
@@ -72,9 +60,3 @@ asrc/main/java/com/example/restwithspringbootandjava/exeptions/InvalidAuthentica
 ssrc/main/java/com/example/restwithspringbootandjava/exeptions/handler/CustomizedResponseEntityExceptionHandler.java,e\a\ea74cc95852c75d4708571f5c44c7d29c252e1e6
 |
 Lsrc/main/java/com/example/restwithspringbootandjava/vo/security/TokenVO.java,e\1\e1cfd340a5aea0923fff9a3f0ebc3fb3e5683433
-}
-Msrc/main/java/com/example/restwithspringbootandjava/service/UserServices.java,6\f\6f3718005d466c1761d0e3cb2320570533f4c505
-}
-Msrc/main/java/com/example/restwithspringbootandjava/config/OpenApiConfig.java,7\f\7f42dcc27d32194e5fa0cdad4f7240f7ef92443f
-u
-Esrc/main/java/com/example/restwithspringbootandjava/model/Person.java,0\0\0022884a79c4a97b4314f3aed8faa9b657612fc8

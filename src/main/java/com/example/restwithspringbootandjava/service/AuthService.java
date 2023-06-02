@@ -12,31 +12,38 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-@Service
-public class AuthServices  {
+import java.util.function.Supplier;
+import java.util.logging.Logger;
 
+
+@Service
+public class AuthService {
+
+    private Logger logger = java.util.logging.Logger.getLogger(AuthService.class.getName());
     @Autowired
     private AuthenticationManager authenticationManager;
 
     @Autowired
-    private JwtTokenProvider jwtTokenProvider;
+    private JwtTokenProvider tokenProvider;
 
     @Autowired
     private UserRepository repository;
 
-    public ResponseEntity SignIn(AccountCredentialsVO data) {
+    @SuppressWarnings("rawtypes")
+    public ResponseEntity signin(AccountCredentialsVO data) {
         try {
-            var userName = data.getUsername();
+            var username = data.getUsername();
             var password = data.getPassword();
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userName, password));
+            authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(username, password));
 
-            var user = repository.findByUsername(userName);
+            var user = repository.findByUsername(username);
 
             var tokenResponse = new TokenVO();
-            if(user != null) {
-                tokenResponse = jwtTokenProvider.createAccessToken(userName, user.getRoles());
+            if (user != null) {
+                tokenResponse = tokenProvider.createAccessToken(username, user.getRoles());
             } else {
-                throw new UsernameNotFoundException("User name " + userName + " not found!");
+                throw new UsernameNotFoundException("Username " + username + " not found!");
             }
             return ResponseEntity.ok(tokenResponse);
         } catch (Exception e) {

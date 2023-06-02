@@ -14,7 +14,7 @@ public class OpenApiConfig {
         return new OpenAPI()
                 .info(new Info()
                         .title("API RESTful")
-//                        .version("version 1")
+                        .version("version 1")
                         .description("Api for managing people and books")
                         .license(new License().name("Apache 2.0")));
     }
