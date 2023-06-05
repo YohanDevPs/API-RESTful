@@ -12,7 +12,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.function.Supplier;
 import java.util.logging.Logger;
 
 
@@ -49,5 +48,17 @@ public class AuthService {
         } catch (Exception e) {
             throw new BadCredentialsException("Invalid username/password supplied!");
         }
+    }
+    @SuppressWarnings("rawtypes")
+    public ResponseEntity refreshToken(String username, String refreshToken) {
+        var user = repository.findByUsername(username);
+
+        var tokenResponse = new TokenVO();
+        if (user != null) {
+            tokenResponse = tokenProvider.refreshToken(refreshToken);
+        } else {
+            throw new UsernameNotFoundException("Username " + username + " not found!");
+        }
+        return ResponseEntity.ok(tokenResponse);
     }
 }
