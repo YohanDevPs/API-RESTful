@@ -3,7 +3,6 @@ package com.example.restwithspringbootandjava.service;
 import com.example.restwithspringbootandjava.controllers.PersonController;
 import com.example.restwithspringbootandjava.exeptions.RequiredObjectIsNullException;
 import com.example.restwithspringbootandjava.exeptions.ResourceNotFoundException;
-import com.example.restwithspringbootandjava.mapper.UtilMapper;
 import com.example.restwithspringbootandjava.model.Person;
 import com.example.restwithspringbootandjava.repositories.PersonRepository;
 import com.example.restwithspringbootandjava.vo.PersonVO;
@@ -13,10 +12,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.logging.Logger;
 
-import static com.example.restwithspringbootandjava.mapper.UtilMapper.parseListObjects;
 import static com.example.restwithspringbootandjava.mapper.UtilMapper.parseObject;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
