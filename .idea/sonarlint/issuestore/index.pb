@@ -18,16 +18,8 @@ z
 Jsrc/main/java/com/example/restwithspringbootandjava/mapper/UtilMapper.java,5\3\53b155c0be16e0c22ace86d274ea83fe2b2c481e
 9
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
-Ž
-^src/test/java/com/example/restwithspringbootandjava/unitests/integrationtests/vo/PersonVO.java,6\1\6189a2aa3efbf654afa80ec51eca9e0410cff293
 „
 Tsrc/test/java/com/example/restwithspringbootandjava/unitests/config/TestConfigs.java,4\5\45784e80e672e04975c1fe43e198ed7df00a4c43
-˜
-hsrc/test/java/com/example/restwithspringbootandjava/unitests/testcontainers/AbstractIntegrationTest.java,4\a\4a3af03ba74e2a0cf9a111bee2962c4f07f9d5dd
-™
-isrc/test/java/com/example/restwithspringbootandjava/unitests/integrationtests/SwaggerIntegrationTest.java,8\a\8a60571fffb1abc0d77fe8628fe89af3cfb44d4a
-¦
-vsrc/test/java/com/example/restwithspringbootandjava/unitests/integrationtests/controller/PersonControllerJsonTest.java,2\8\284b03086bd692fb8cb29e54ce38d901523d4614
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 „
@@ -44,8 +36,6 @@ Wsrc/test/java/com/example/restwithspringbootandjava/unitests/mapper/UtilMapperT
 Psrc/test/java/com/example/restwithspringbootandjava/unitests/mocks/MockBook.java,b\0\b02868ef51c2d51b94d565f826b55d4e7c3b5f91
 ‰
 Ysrc/test/java/com/example/restwithspringbootandjava/unitests/service/BookServiceTest.java,d\0\d0dad4ba55d8de60d6e66d61141f54a9907042a8
-t
-Dsrc/main/java/com/example/restwithspringbootandjava/vo/PersonVO.java,7\f\7fd3bf14d2d7ff69a22dcf58403fc9bce9a19482
 ‹
 [src/test/java/com/example/restwithspringbootandjava/unitests/service/PersonServiceTest.java,9\9\999d1d15fff8637bb0c8c02a8f6d92a06346eae8
 w
