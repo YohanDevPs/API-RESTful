@@ -9,11 +9,14 @@ import com.example.restwithspringbootandjava.repositories.PersonRepository;
 import com.example.restwithspringbootandjava.vo.PersonVO;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.logging.Logger;
 
+import static com.example.restwithspringbootandjava.mapper.UtilMapper.parseListObjects;
 import static com.example.restwithspringbootandjava.mapper.UtilMapper.parseObject;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
@@ -49,19 +52,19 @@ public class PersonService {
         return vo;
     }
 
-    public List<PersonVO> findAll() {
+    public Page<PersonVO> findAll(Pageable pageable) {
+        var pagePerson = repository.findAll(pageable);
 
-        var voList = UtilMapper.parseListObjects(repository.findAll(), PersonVO.class);
-        voList.stream()
-                .forEach(vo -> {
-                    try {
-                        vo.add(linkTo(methodOn(PersonController.class).findById(vo.getKey())).withSelfRel());
-                    } catch (Exception e) {
-                        throw new RuntimeException(e);
-                    }
-                });
+        var pagePersonVOs = pagePerson
+                .map(p -> parseObject(p, PersonVO.class));
+
+        pagePersonVOs
+                .map(p -> p.add(linkTo(methodOn(PersonController.class)
+                        .findById(p.getKey())).
+                        withSelfRel()));
+
         logger.info("finding all people!");
-        return voList;
+        return pagePersonVOs;
     }
 
     public PersonVO create(PersonVO person) {
