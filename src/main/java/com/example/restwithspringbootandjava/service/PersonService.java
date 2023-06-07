@@ -7,6 +7,7 @@ import com.example.restwithspringbootandjava.mapper.UtilMapper;
 import com.example.restwithspringbootandjava.model.Person;
 import com.example.restwithspringbootandjava.repositories.PersonRepository;
 import com.example.restwithspringbootandjava.vo.PersonVO;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +30,19 @@ public class PersonService {
     public PersonVO findById(Long id)  {
         var entity = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(NO_RECORDS_MSG_ERROR));
+        var vo = parseObject(entity, PersonVO.class);
+        vo.add(linkTo(methodOn(PersonController.class).findById(id)).withSelfRel());
+        logger.info("find one PersonVO");
+        return vo;
+    }
+
+    @Transactional
+    public PersonVO disabledPerson(Long id)  {
+        repository.disabledPerson(id);
+
+        var entity = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException(NO_RECORDS_MSG_ERROR));
+
         var vo = parseObject(entity, PersonVO.class);
         vo.add(linkTo(methodOn(PersonController.class).findById(id)).withSelfRel());
         logger.info("find one PersonVO");

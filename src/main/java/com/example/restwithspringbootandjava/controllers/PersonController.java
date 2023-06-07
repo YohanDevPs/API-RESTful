@@ -49,7 +49,7 @@ public class PersonController {
             responses = {
                     @ApiResponse(description = "Success", responseCode = "200",
                             content = @Content(schema = @Schema(implementation = PersonVO.class))),
-                    @ApiResponse(description = "Not Found", responseCode = "204", content = @Content),
+                    @ApiResponse(description = "No Content", responseCode = "204", content = @Content),
                     @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
                     @ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
                     @ApiResponse(description = "Not Found", responseCode = "404", content = @Content),
@@ -89,6 +89,22 @@ public class PersonController {
             })
     public PersonVO update(@RequestBody PersonVO person) {
         return service.update(person);
+    }
+
+    @PatchMapping(value = "/{id}",
+            produces = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML })
+    @Operation(summary = "Disabled a specific Person by your ID", description = "Finds a Person", tags = {"People"},
+            responses = {
+                    @ApiResponse(description = "Success", responseCode = "200",
+                            content = @Content(schema = @Schema(implementation = PersonVO.class))),
+                    @ApiResponse(description = "No Content", responseCode = "204", content = @Content),
+                    @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
+                    @ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
+                    @ApiResponse(description = "Not Found", responseCode = "404", content = @Content),
+                    @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
+            })
+    public PersonVO disablePerson(@PathVariable(value = "id") Long id) {
+        return service.disabledPerson(id);
     }
 
     @DeleteMapping(value = "/{id}")
