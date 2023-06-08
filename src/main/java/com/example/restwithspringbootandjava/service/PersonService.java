@@ -8,8 +8,11 @@ import com.example.restwithspringbootandjava.repositories.PersonRepository;
 import com.example.restwithspringbootandjava.vo.PersonVO;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PagedResourcesAssembler;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.PagedModel;
 import org.springframework.stereotype.Service;
 
 import java.util.logging.Logger;
@@ -24,6 +27,8 @@ public class PersonService {
     public static final String NO_RECORDS_MSG_ERROR = "No records found for this id";
     @Autowired
     private PersonRepository repository;
+    @Autowired
+    private PagedResourcesAssembler<PersonVO> assembler;
 
     private Logger logger = Logger.getLogger(PersonService.class.getName());
 
@@ -49,7 +54,7 @@ public class PersonService {
         return vo;
     }
 
-    public Page<PersonVO> findAll(Pageable pageable) {
+    public PagedModel<EntityModel<PersonVO>> findAll(Pageable pageable) {
         var pagePerson = repository.findAll(pageable);
 
         var pagePersonVOs = pagePerson
@@ -60,8 +65,12 @@ public class PersonService {
                         .findById(p.getKey())).
                         withSelfRel()));
 
+        Link link = linkTo(methodOn(PersonController.class)
+                .findAll(pageable.getPageNumber(), pageable.getPageSize(), "asc"))
+                .withSelfRel();
+
         logger.info("finding all people!");
-        return pagePersonVOs;
+        return assembler.toModel(pagePersonVOs, link);
     }
 
     public PersonVO create(PersonVO person) {
