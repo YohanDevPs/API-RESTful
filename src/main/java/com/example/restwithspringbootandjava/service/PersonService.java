@@ -55,13 +55,12 @@ public class PersonService {
     }
 
     public PagedModel<EntityModel<PersonVO>> findAll(Pageable pageable) {
-        var pagePerson = repository.findAll(pageable);
+        var personPage = repository.findAll(pageable);
 
-        var pagePersonVOs = pagePerson
+        var personVOsPage = personPage
                 .map(p -> parseObject(p, PersonVO.class));
 
-        pagePersonVOs
-                .map(p -> p.add(linkTo(methodOn(PersonController.class)
+        personVOsPage.map(p -> p.add(linkTo(methodOn(PersonController.class)
                         .findById(p.getKey())).
                         withSelfRel()));
 
@@ -70,7 +69,7 @@ public class PersonService {
                 .withSelfRel();
 
         logger.info("finding all people!");
-        return assembler.toModel(pagePersonVOs, link);
+        return assembler.toModel(personVOsPage, link);
     }
 
     public PersonVO create(PersonVO person) {
