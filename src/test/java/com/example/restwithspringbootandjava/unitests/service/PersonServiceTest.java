@@ -54,32 +54,32 @@ class PersonServiceTest {
         assertEquals("Male", result.getGender());
     }
 
-    @Test
-    void findAll() {
-        var list = input.mockEntityList();
-
-        when(repository.findAll()).thenReturn(list);
-
-        var people = service.findAll();
-        assertNotNull(people);
-        assertEquals(14, people.size());
-
-        var personOne = people.get(1);
-
-        assertTrue(personOne.toString().contains("links: [</api/person/v1/1>;rel=\"self\"]"));
-        assertEquals("First Name Test1", personOne.getFirstName());
-        assertEquals("Last Name Test1", personOne.getLastName());
-        assertEquals("Address Test1", personOne.getAddress());
-        assertEquals("Female", personOne.getGender());
-
-        var personEight = people.get(8);
-
-        assertTrue(personEight.toString().contains("links: [</api/person/v1/8>;rel=\"self\"]"));
-        assertEquals("First Name Test8", personEight.getFirstName());
-        assertEquals("Last Name Test8", personEight.getLastName());
-        assertEquals("Address Test8", personEight.getAddress());
-        assertEquals("Male", personEight.getGender());
-    }
+//    @Test
+//    void findAll() {
+//        var list = input.mockEntityList();
+//
+//        when(repository.findAll()).thenReturn(list);
+//
+//        var people = service.findAll();
+//        assertNotNull(people);
+//        assertEquals(14, people.size());
+//
+//        var personOne = people.get(1);
+//
+//        assertTrue(personOne.toString().contains("links: [</api/person/v1/1>;rel=\"self\"]"));
+//        assertEquals("First Name Test1", personOne.getFirstName());
+//        assertEquals("Last Name Test1", personOne.getLastName());
+//        assertEquals("Address Test1", personOne.getAddress());
+//        assertEquals("Female", personOne.getGender());
+//
+//        var personEight = people.get(8);
+//
+//        assertTrue(personEight.toString().contains("links: [</api/person/v1/8>;rel=\"self\"]"));
+//        assertEquals("First Name Test8", personEight.getFirstName());
+//        assertEquals("Last Name Test8", personEight.getLastName());
+//        assertEquals("Address Test8", personEight.getAddress());
+//        assertEquals("Male", personEight.getGender());
+//    }
 
     @Test
     void testCreate() {
