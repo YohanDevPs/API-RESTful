@@ -1,4 +1,4 @@
-package com.example.restwithspringbootandjava.unitests.integrationtests.controller;
+package com.example.restwithspringbootandjava.unitests.integrationtests.controller.withjson;
 
 import com.example.restwithspringbootandjava.unitests.config.TestConfigs;
 import com.example.restwithspringbootandjava.unitests.integrationtests.vo.PersonVO;
