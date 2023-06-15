@@ -1,5 +1,8 @@
 package com.example.restwithspringbootandjava.unitests.integrationtests.vo;
 
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class PersonVO {
 
     private Long id;
@@ -9,8 +12,7 @@ public class PersonVO {
     private String gender;
     private Boolean enabled;
 
-    public PersonVO() {
-    }
+    public PersonVO() {}
 
     public Long getId() {
         return id;

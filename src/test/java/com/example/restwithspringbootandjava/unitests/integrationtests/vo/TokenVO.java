@@ -3,7 +3,12 @@ package com.example.restwithspringbootandjava.unitests.integrationtests.vo;
 import java.io.Serializable;
 import java.util.Date;
 
-public class TokenVO implements Serializable {
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
+public class TokenVO implements Serializable{
+
+    private static final long serialVersionUID = 1L;
 
     private String username;
     private Boolean authenticated;
@@ -12,8 +17,7 @@ public class TokenVO implements Serializable {
     private String accessToken;
     private String refreshToken;
 
-    public TokenVO() {
-    }
+    public TokenVO() {}
 
     public TokenVO(String username,
                    Boolean authenticated,
@@ -78,31 +82,57 @@ public class TokenVO implements Serializable {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof com.example.restwithspringbootandjava.vo.security.TokenVO tokenVO)) return false;
-
-        if (getUsername() != null ? !getUsername().equals(tokenVO.getUsername()) : tokenVO.getUsername() != null)
-            return false;
-        if (getAuthenticated() != null ? !getAuthenticated().equals(tokenVO.getAuthenticated()) : tokenVO.getAuthenticated() != null)
-            return false;
-        if (getCreated() != null ? !getCreated().equals(tokenVO.getCreated()) : tokenVO.getCreated() != null)
-            return false;
-        if (getExpiration() != null ? !getExpiration().equals(tokenVO.getExpiration()) : tokenVO.getExpiration() != null)
-            return false;
-        if (getAccessToken() != null ? !getAccessToken().equals(tokenVO.getAccessToken()) : tokenVO.getAccessToken() != null)
-            return false;
-        return getRefreshToken() != null ? getRefreshToken().equals(tokenVO.getRefreshToken()) : tokenVO.getRefreshToken() == null;
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((accessToken == null) ? 0 : accessToken.hashCode());
+        result = prime * result + ((authenticated == null) ? 0 : authenticated.hashCode());
+        result = prime * result + ((created == null) ? 0 : created.hashCode());
+        result = prime * result + ((expiration == null) ? 0 : expiration.hashCode());
+        result = prime * result + ((refreshToken == null) ? 0 : refreshToken.hashCode());
+        result = prime * result + ((username == null) ? 0 : username.hashCode());
+        return result;
     }
 
     @Override
-    public int hashCode() {
-        int result = getUsername() != null ? getUsername().hashCode() : 0;
-        result = 31 * result + (getAuthenticated() != null ? getAuthenticated().hashCode() : 0);
-        result = 31 * result + (getCreated() != null ? getCreated().hashCode() : 0);
-        result = 31 * result + (getExpiration() != null ? getExpiration().hashCode() : 0);
-        result = 31 * result + (getAccessToken() != null ? getAccessToken().hashCode() : 0);
-        result = 31 * result + (getRefreshToken() != null ? getRefreshToken().hashCode() : 0);
-        return result;
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        TokenVO other = (TokenVO) obj;
+        if (accessToken == null) {
+            if (other.accessToken != null)
+                return false;
+        } else if (!accessToken.equals(other.accessToken))
+            return false;
+        if (authenticated == null) {
+            if (other.authenticated != null)
+                return false;
+        } else if (!authenticated.equals(other.authenticated))
+            return false;
+        if (created == null) {
+            if (other.created != null)
+                return false;
+        } else if (!created.equals(other.created))
+            return false;
+        if (expiration == null) {
+            if (other.expiration != null)
+                return false;
+        } else if (!expiration.equals(other.expiration))
+            return false;
+        if (refreshToken == null) {
+            if (other.refreshToken != null)
+                return false;
+        } else if (!refreshToken.equals(other.refreshToken))
+            return false;
+        if (username == null) {
+            if (other.username != null)
+                return false;
+        } else if (!username.equals(other.username))
+            return false;
+        return true;
     }
 }

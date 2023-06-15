@@ -1,11 +1,9 @@
 package com.example.restwithspringbootandjava.unitests.integrationtests.controller.withjson;
 
 import com.example.restwithspringbootandjava.unitests.config.TestConfigs;
+import com.example.restwithspringbootandjava.unitests.integrationtests.vo.AccountCredentialsVO;
 import com.example.restwithspringbootandjava.unitests.integrationtests.vo.TokenVO;
 import com.example.restwithspringbootandjava.unitests.testcontainers.AbstractIntegrationTest;
-import com.example.restwithspringbootandjava.vo.security.AccountCredentialsVO;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -23,7 +21,7 @@ public class AuthControllerJsonTest extends AbstractIntegrationTest {
 
     @Test
     @Order(0)
-    public void testSignin() throws JsonMappingException, JsonProcessingException {
+    public void testSignin() {
 
         AccountCredentialsVO user = new AccountCredentialsVO("leandro", "admin123");
 
@@ -46,7 +44,7 @@ public class AuthControllerJsonTest extends AbstractIntegrationTest {
 
     @Test
     @Order(1)
-    public void testRefresh() throws JsonMappingException, JsonProcessingException {
+    public void testRefresh() {
 
         AccountCredentialsVO user = new AccountCredentialsVO("leandro", "admin123");
 
