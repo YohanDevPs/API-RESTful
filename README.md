@@ -14,10 +14,10 @@ O principal objetivo desse projeto é criar uma API RESTful com poucas entidades
 - Implementar HATEOS (Hypermedia as the Engine of Application State) :white_check_mark:
 - Adicinar suporte ao Swagger :white_check_mark:
 - Configurar Cross-origin :white_check_mark:
-- Autenticação com JWT e Spring Security
+- Autenticação com JWT e Spring Security :white_check_mark:
 - Blindar aplicação com Rest Assured, Testcontainers e JUnit 5
-- Implementar busca paginada
-- Dockerizar aplicação
+- Implementar busca paginada :white_check_mark:
+- Dockerizar aplicação :white_check_mark:
 - Implementar aplicação à AWS
 - Garantir integração continua na Amazon AWS com o Github Actions
 - Consumir aplicação com ReactJS
