@@ -2,7 +2,8 @@
 
 ## Objetivo:
 
-O principal objetivo desse projeto é criar uma API RESTful com poucas entidades e relacionamentos, mas que seja escalável, segura e profissional, utilizando tecnologias amplamente empregadas em projetos de software com Spring Boot e Java.
+O principal objetivo desse projeto é criar uma API RESTful que permida cadastro de usuários e livros.
+O sistema está sendo construido para ser seja escalável, seguro e profissional, utilizando tecnologias amplamente empregadas em projetos de software com Spring Boot e Java, e como extra, a API será consumida com ReactJS.
 
 ## STATUS - Em construção :hammer:
 
