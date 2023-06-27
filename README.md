@@ -5,6 +5,8 @@
 O principal objetivo desse projeto é criar uma API RESTful que permida cadastro de usuários e livros.
 O sistema está sendo construido para ser seja escalável, seguro e profissional, utilizando tecnologias amplamente empregadas em projetos de software com Spring Boot e Java, e como extra, a API será consumida com ReactJS.
 
+[![Docker Hub Repo](https://img.shields.io/docker/pulls/yohanps/rest-udemy.svg)](https://hub.docker.com/repository/docker/yohanps/rest-udemy)
+
 ## STATUS - Em construção :hammer:
 
 - CRUD para Pessoas e Livros :white_check_mark:
