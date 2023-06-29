@@ -25,11 +25,11 @@ jobs:
         distribution: 'adopt'
         cache: maven
 
-    - name: Build Application JAR
+    - name: Build application JAR
       working-directory: ./rest-with-spring-boot-and-java>
       run: mvn clean package
 
-    - name: Docker Compose Build
+    - name: Docker compose Build
       working-directory: .
       run: docker compose build
 
