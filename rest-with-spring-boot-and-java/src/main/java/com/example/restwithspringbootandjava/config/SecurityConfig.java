@@ -1,8 +1,5 @@
 package com.example.restwithspringbootandjava.config;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import com.example.restwithspringbootandjava.security.JwtConfigurer;
 import com.example.restwithspringbootandjava.security.JwtTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +15,9 @@ import org.springframework.security.crypto.password.DelegatingPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @EnableWebSecurity
 @Configuration

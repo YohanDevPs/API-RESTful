@@ -7,7 +7,6 @@ import com.example.restwithspringbootandjava.exeptions.ResourceNotFoundException
 import com.example.restwithspringbootandjava.model.Book;
 import com.example.restwithspringbootandjava.repositories.BookRepository;
 import com.example.restwithspringbootandjava.vo.BookVO;
-import com.example.restwithspringbootandjava.vo.PersonVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;
