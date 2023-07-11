@@ -22,5 +22,5 @@ O sistema está sendo construido para ser seja escalável, seguro e profissional
 - Implementar busca paginada :white_check_mark:
 - Dockerizar aplicação :white_check_mark:
 - Implementar aplicação à AWS
-- Garantir integração continua na Amazon AWS com o Github Actions
+- Garantir integração continua na Amazon AWS com o Github Actions :white_check_mark:
 - Consumir aplicação com ReactJS
