@@ -10,7 +10,7 @@ export default function Login() {
       <section className="form">
         <img src={logoImage} alt="Logo" />
         <form action="">
-          <h1>Acess your Account</h1>
+          <h1>Access your Account</h1>
           <input placeholder="Username" />
           <input type="password" placeholder="Password" />
           <button className="button" type="submit">Login</button>
