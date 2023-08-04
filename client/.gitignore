@@ -1,0 +1,12 @@
+node_modules/
+build/
+dist/
+
+*.log
+
+.env.local
+
+.cache/
+yarn-error.log
+
+yarn.lock
