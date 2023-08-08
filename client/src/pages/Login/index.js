@@ -9,7 +9,7 @@ import api from "../../services/api";
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   async function login(event) {
     event.preventDefault();
@@ -23,9 +23,9 @@ export default function Login() {
       const response = await api.post("/auth/signin", data);
 
       localStorage.setItem("username", username);
-      localStorage.setItem("accessToken", response.data.token);
+      localStorage.setItem("accessToken", response.data.accessToken);
 
-      navigate("/books"); 
+      navigate("/books");
     } catch (err) {
       console.log("Erro - ", err);
       alert("Login failed, Try again");
