@@ -10,6 +10,7 @@ import logoImage from "../../assets/logo.svg";
 
 export default function Books() {
   const [books, setBooks] = useState([]);
+  const [page, setPage] = useState(0);
 
   const username = localStorage.getItem("username");
   const accessToken = localStorage.getItem("accessToken");
@@ -22,7 +23,7 @@ export default function Books() {
 
   async function editBook(id) {
     try {
-      navigate(`book/new/${id}`);
+      navigate(`/book/new/${id}`);
     } catch (error) {
       alert("Edit failed! Try again");
     }
@@ -40,21 +41,23 @@ export default function Books() {
     }
   }
 
+  async function fetchMoreBooks() {
+    const response = await api.get("api/books/v1", {
+      headers: { Authorization: `Bearer ${accessToken}` },
+      params: {
+        page: page,
+        limit: 4,
+        direction: "asc",
+      },
+    });
+
+    setBooks([...books, ...response.data._embedded.bookVOList]);
+    setPage(page + 1);
+  }
+
   useEffect(() => {
-    api
-      .get("api/books/v1", {
-        headers: { Authorization: `Bearer ${accessToken}` },
-        params: {
-          page: 0,
-          limit: 4,
-          direction: "asc",
-        },
-      })
-      .then((response) => {
-        setBooks(response.data._embedded.bookVOList);
-      });
-  }, []); 
-  
+    fetchMoreBooks();
+  }, []);
 
   return (
     <div className="book-container">
@@ -63,7 +66,7 @@ export default function Books() {
         <span>
           Welcome, <strong>{username.toUpperCase()}</strong>!
         </span>
-        <Link className="button" to="book/new/0">
+        <Link className="button" to="/book/new/0">
           Add new book
         </Link>
         <button onClick={logout} type="button">
@@ -99,6 +102,10 @@ export default function Books() {
           </li>
         ))}
       </ul>
+
+      <button className="button" onClick={fetchMoreBooks} type="button">
+        Load more
+      </button>
     </div>
   );
 }
