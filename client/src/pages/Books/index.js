@@ -15,6 +15,11 @@ export default function Books() {
   const accessToken = localStorage.getItem("accessToken");
   const navigate = useNavigate();
 
+  async function logout() {
+    localStorage.clear();
+    navigate("/");
+  }
+
   async function deleteBook(id) {
     try {
       await api.delete(`api/books/v1/${id}`, {
@@ -32,7 +37,7 @@ export default function Books() {
       .get("api/books/v1", {
         headers: { Authorization: `Bearer ${accessToken}` },
         params: {
-          page: 1,
+          page: 0,
           limit: 4,
           direction: "asc",
         },
@@ -52,7 +57,7 @@ export default function Books() {
         <Link className="button" to="book/new">
           Add new book
         </Link>
-        <button type="button">
+        <button onClick={logout} type="button">
           <FiPower size={18} color="#251FC5" />
         </button>
       </header>
