@@ -20,6 +20,14 @@ export default function Books() {
     navigate("/");
   }
 
+  async function editBook(id) {
+    try {
+      navigate(`book/new/${id}`);
+    } catch (error) {
+      alert("Edit failed! Try again");
+    }
+  }
+
   async function deleteBook(id) {
     try {
       await api.delete(`api/books/v1/${id}`, {
@@ -45,7 +53,8 @@ export default function Books() {
       .then((response) => {
         setBooks(response.data._embedded.bookVOList);
       });
-  });
+  }, []); 
+  
 
   return (
     <div className="book-container">
@@ -54,7 +63,7 @@ export default function Books() {
         <span>
           Welcome, <strong>{username.toUpperCase()}</strong>!
         </span>
-        <Link className="button" to="book/new">
+        <Link className="button" to="book/new/0">
           Add new book
         </Link>
         <button onClick={logout} type="button">
@@ -81,7 +90,7 @@ export default function Books() {
             <p>
               {Intl.DateTimeFormat("pt-BR").format(new Date(book.launchDate))}
             </p>
-            <button type="button">
+            <button onClick={() => editBook(book.id)} type="button">
               <FiEdit size={20} color="#251FC5" />
             </button>
             <button onClick={() => deleteBook(book.id)} type="button">
