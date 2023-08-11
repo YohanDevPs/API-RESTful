@@ -28,6 +28,7 @@ API RESTful de CRUD de usuários e livros construido com proposito de portifóli
 - Atualize com sua IDE favorita.      
   - caso queria usar pelo terminal, execute `./mvnw clean package`  para linux ou `.\mvnw clean package ` para windows. Após isso execute na raiz: `java -jar <...caminhoParaSeuJar>`
 
+- Após isso, você pode ver a documentação gerada pelo Swagger no ambiente local nessa url: http://localhost/swagger-ui/index.html
 
 
 ### Manipulando as requisições da API.
