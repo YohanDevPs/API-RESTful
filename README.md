@@ -29,6 +29,7 @@ API RESTful de CRUD de usuários e livros construido com proposito de portifóli
   - caso queria usar pelo terminal, execute `./mvnw clean package`  para linux ou `.\mvnw clean package ` para windows. Após isso execute na raiz: `java -jar <...caminhoParaSeuJar>`
 
 
+
 ### Manipulando as requisições da API.
 
 #### Antes de tudo, autentifique o usuário e use o token de acesso no header nas proximas requisições, exemplo: 
@@ -59,9 +60,10 @@ Print do token no header em uma requisição:
 ![printbearer](https://github.com/YohanDevPs/API-RESTful/assets/87953006/40a517dc-eb5d-4c6b-b63c-f79edd47318d)
 
 
-#### Requisição <font color="blue">GET</font>** de paginação de livros e seu JSON de saída.
 
-URL <font color="blue">GET</font> `{{baseUrl}}/api/books/v1?page=0&direction=asc&limit=3`
+#### Exemplo de requisição <font color="blue">GET</font> de paginação de livros e seu JSON de saída.
+
+Requisição: <font color="blue">GET</font> `{{baseUrl}}/api/books/v1?page=0&direction=asc&limit=3`
 
 <details>
   <summary>Saída</summary>
@@ -132,3 +134,13 @@ URL <font color="blue">GET</font> `{{baseUrl}}/api/books/v1?page=0&direction=asc
 }
 ```
 </details>
+
+## EXTRA: Front-end em ReactJs
+
+### Considerações
+
+O client está muito simples e talvez seja melhorado com o tempo, mas por enquanto está aqui para provar que também sei um pouco de front-end. 
+
+#### Print
+![image](https://github.com/YohanDevPs/API-RESTful/assets/87953006/34a0f53e-9a8b-49c6-aec2-7804e9ec3614)
+
