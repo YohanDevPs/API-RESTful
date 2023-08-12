@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./styles.css";
 
-import logoImage from "../../assets/logo.svg";
-import padlock from "../../assets/padlock.png";
+import logoImage from "../../assets/logobook.svg";
 import api from "../../services/api";
 
 export default function Login() {
@@ -35,7 +34,6 @@ export default function Login() {
   return (
     <div className="login-container">
       <section className="form">
-        <img src={logoImage} alt="Logo" />
         <form onSubmit={login}>
           <h1>Access your Account</h1>
           <input
@@ -54,7 +52,6 @@ export default function Login() {
           </button>
         </form>
       </section>
-      <img src={padlock} alt="Login" />
     </div>
   );
 }

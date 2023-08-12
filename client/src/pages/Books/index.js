@@ -6,7 +6,7 @@ import api from "../../services/api";
 
 import "./styles.css";
 
-import logoImage from "../../assets/logo.svg";
+import logoImage from "../../assets/logobook.svg";
 
 export default function Books() {
   const [books, setBooks] = useState([]);
