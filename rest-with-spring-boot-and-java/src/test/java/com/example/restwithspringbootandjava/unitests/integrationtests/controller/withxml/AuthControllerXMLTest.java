@@ -26,7 +26,7 @@ public class AuthControllerXMLTest extends AbstractIntegrationTest   {
         @Order(0)
         public void testSignin() {
 
-            AccountCredentialsVO user = new AccountCredentialsVO("leandro", "admin123");
+            AccountCredentialsVO user = new AccountCredentialsVO("yohan", "admin123");
 
             tokenVO = given()
                     .basePath("/auth/signin")
@@ -49,7 +49,7 @@ public class AuthControllerXMLTest extends AbstractIntegrationTest   {
         @Order(1)
         public void testRefresh() {
 
-            AccountCredentialsVO user = new AccountCredentialsVO("leandro", "admin123");
+            AccountCredentialsVO user = new AccountCredentialsVO("yohan", "admin123");
 
             var newTokenVO = given()
                     .basePath("/auth/refresh")

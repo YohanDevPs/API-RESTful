@@ -36,7 +36,7 @@ public class AuthControllerYMLTest extends AbstractIntegrationTest {
     public void testSignin() throws JsonMappingException, JsonProcessingException {
 
         AccountCredentialsVO user =
-                new AccountCredentialsVO("leandro", "admin123");
+                new AccountCredentialsVO("yohan", "admin123");
 
         RequestSpecification specification = new RequestSpecBuilder()
                 .addFilter(new RequestLoggingFilter(LogDetail.ALL))

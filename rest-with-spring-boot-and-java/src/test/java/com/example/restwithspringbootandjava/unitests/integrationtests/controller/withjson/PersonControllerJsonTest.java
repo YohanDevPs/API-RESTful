@@ -49,7 +49,7 @@ public class PersonControllerJsonTest extends AbstractIntegrationTest {
     @Order(0)
     public void authorization() {
 
-        AccountCredentialsVO user = new AccountCredentialsVO("leandro", "admin123");
+        AccountCredentialsVO user = new AccountCredentialsVO("yohan", "admin123");
 
         var accessToken = given()
                 .basePath("/auth/signin")
