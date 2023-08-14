@@ -140,7 +140,7 @@ Requisição: <font color="blue">GET</font> `http://localhost/api/books/v1?page=
 
 ### Considerações
 
-O client está muito simples e talvez seja melhorado com o tempo, mas por enquanto está aqui para provar que também sei um pouco de front-end. 
+O client está muito simples e talvez seja melhorado com o tempo. Mas o objetivo por enquanto é provar que também sei um pouco de front-end. 
 
 #### Print
 ![image](https://github.com/YohanDevPs/API-RESTful/assets/87953006/c66abacd-ebc0-4b2d-b8a1-2f0da6f25afd)
