@@ -18,7 +18,7 @@ services:
       - 3308
     networks:
       - yohan-network
-  rest-udemy:
+  rest_book:
     image: yohanps/rest_book
     restart: always
     build: ./rest-with-spring-boot-and-java
