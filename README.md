@@ -19,7 +19,7 @@ API RESTful de CRUD de usuários e livros construido com proposito de portifóli
 - Implementar busca paginada;
 - Dockerizar aplicação;
   
-[![Docker Hub Repo](https://img.shields.io/docker/pulls/yohanps/rest-udemy.svg)](https://hub.docker.com/repository/docker/yohanps/rest-udemy)
+[![Docker Hub Repo](https://img.shields.io/docker/pulls/yohanps/rest_book.svg)](https://hub.docker.com/repository/docker/yohanps/rest_book)
 
 ### Executando a aplicação:
 
