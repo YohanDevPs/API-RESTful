@@ -17,9 +17,7 @@ API RESTful de CRUD de usuários e livros construido com proposito de portifóli
 - Autenticação com JWT e Spring Security;
 - Blindar aplicação com Rest Assured, Testcontainers e JUnit 5
 - Implementar busca paginada;
-- Dockerizar aplicação;
-  
-[![Docker Hub Repo](https://img.shields.io/docker/pulls/yohanps/rest_book.svg)](https://hub.docker.com/repository/docker/yohanps/rest_book)
+- Dockerizar aplicação (Repositório dockerhub: [![Docker Hub Repo](https://img.shields.io/docker/pulls/yohanps/rest_book.svg)](https://hub.docker.com/repository/docker/yohanps/rest_book))
 
 ### Executando a aplicação:
 
